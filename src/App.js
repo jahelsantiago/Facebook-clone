@@ -1,23 +1,36 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Header from "./components/Header.js"
+import Publication from './components/Publication';
+import PublicationCreator from "./components/PublicationCreator.js"
+import LogIn from "./components/LogIn.js"
 
 function App() {
-  return (
+  const [user, setuser] = useState(null)
+
+  if(user == null){
+    return(
+      <LogIn/>
+    )
+  }
+
+  return (  
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/*Header*/}
+      <Header/>
+      {/*Body*/}
+      <div className="app__body">
+        {/*Left*/}
+        {/*Center*/}
+        <div className="app__center">
+          <PublicationCreator/>
+          <Publication
+            Owner = "Jahel"
+            Text = "lorem ipsu facto terci derma preto di maria"
+          />
+        </div>        
+        {/*Right*/}
+      </div>
     </div>
   );
 }

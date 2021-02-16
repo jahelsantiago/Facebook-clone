@@ -1,0 +1,27 @@
+.Login_container{
+    background-color: Rgb(240, 242, 245); 
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logIn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+    background-color: white;  
+    width: 500px;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.logo_text{
+    width: 500px;
+}
+
+.logo_image{
+    width: 190px;
+}
