@@ -4,10 +4,12 @@ import Header from "./components/Header.js"
 import Publication from './components/Publication';
 import PublicationCreator from "./components/PublicationCreator.js"
 import LogIn from "./components/LogIn.js"
+import {useStateValue} from "./Backed/Context"
 
 function App() {
-  const [user, setuser] = useState(null)
-
+  const [{user}, dispatch] = useStateValue();
+  console.log(user)
+  
   if(user == null){
     return(
       <LogIn/>

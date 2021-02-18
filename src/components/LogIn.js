@@ -1,10 +1,28 @@
 import React from 'react'
 import Button from '@material-ui/core/Button';
 import "./Login.css"
-const LogIn = () => {
-    function login(){
-        alert("Hola")
-    }
+import {actionTypes} from "../Backed/Reducer"
+import {useStateValue} from "../Backed/Context"
+import {auth, provider} from "../Backed/firebase_config"
+
+const LogIn = () => {     
+    const [state, dispatch] = useStateValue();
+
+    function Autenticate(){        
+        auth.signInWithPopup(provider)
+        .then((res)=>{
+            //lo que se debe hacer con la fucnion cuando se retorno el usuario
+            console.log(`tipo: ${actionTypes.SET_USER}, datos:${res.user}`)
+            dispatch({
+                type : actionTypes.SET_USER,
+                user : res.user,
+            })
+            
+        })
+        .catch((e)=>{
+            console.log(e)
+        })
+    } 
     
     return (
         <div className = "Login_container">
@@ -14,7 +32,7 @@ const LogIn = () => {
                 <Button
                     variant="contained"
                     color="primary"                    
-                    onClick = {login}
+                    onClick = {Autenticate}
                 >
                     Log In
                 </Button>
