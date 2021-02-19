@@ -11,8 +11,7 @@ const LogIn = () => {
     function Autenticate(){        
         auth.signInWithPopup(provider)
         .then((res)=>{
-            //lo que se debe hacer con la fucnion cuando se retorno el usuario
-            console.log(`tipo: ${actionTypes.SET_USER}, datos:${res.user}`)
+            //lo que se debe hacer con la fucnion cuando se retorno el usuario            
             dispatch({
                 type : actionTypes.SET_USER,
                 user : res.user,

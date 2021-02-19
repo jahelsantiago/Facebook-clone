@@ -12,11 +12,17 @@ import { IconButton } from '@material-ui/core';
 import ChatIcon from '@material-ui/icons/Chat';
 import LiveTvIcon from '@material-ui/icons/LiveTv';
 import "./Header.css";
-
-
+import {useStateValue} from "../Backed/Context"
 
 
 const Header = () => {
+    const [{user}, dispatch] = useStateValue()
+    console.log(user)
+    
+    const avatar_img = user.photoURL;      
+    const user_name = user.displayName.split(" ")[0];
+
+    
     return (
         <div className = "header">            
             {/*Left*/}
@@ -25,7 +31,7 @@ const Header = () => {
                 <div className="header__input flex_center">
                     <SearchIcon className = "SearchIcon"/>                
                     <input type="text" placeholder = "Search Facebook"/>
-                </div>                                
+                </div>                                                
             </div>
             {/*Center*/}
             <div className="header__options flex_center">                
@@ -49,10 +55,10 @@ const Header = () => {
             {/*Right*/}
             <div className="header__left flex_center">                
                 <IconButton>
-                    <Avatar alt="Remy Sharp"/>                    
+                    <Avatar alt="Remy Sharp" src = {avatar_img}/>                    
                 </IconButton>
                 <div className="Name">
-                    <h3>Jahel</h3>  
+                    <h3>{user_name}</h3>  
                 </div>
                 <IconButton>                    
                     <AddIcon/>
